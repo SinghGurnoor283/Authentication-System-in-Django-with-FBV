@@ -1,0 +1,42 @@
+{% extends 'account/base.html' %}
+
+{% block title %}Seller Dashboard{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">👨‍💼 Seller Dashboard</h2>
+
+    <!-- Messages -->
+    {% if messages %}
+        <div>
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <p>Welcome, <strong>{{ request.user.name }}</strong>!</p>
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="#">📦 Manage Products</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#">📊 View Sales</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#">📝 Profile Settings</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'password_change' %}">🔑 Change Password</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'logout' %}">🚪 Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}

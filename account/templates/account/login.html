@@ -1,0 +1,40 @@
+{% extends "account/base.html" %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow-sm p-4">
+            <h3 class="mb-4 text-center">Login</h3>
+            
+            <form method="POST">
+                {% csrf_token %}
+                
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="id_email" class="form-label">Email</label>
+                    <input type="email" name="email" id="id_email" class="form-control" required>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <label for="id_password" class="form-label">Password</label>
+                    <input type="password" name="password" id="id_password" class="form-control" required>
+                </div>
+
+                <!-- Submit -->
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+
+            <!-- Extra links -->
+            <div class="text-center">
+                <p><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
+                <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
